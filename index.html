@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Untitled</title>
+    <link rel="stylesheet" href="./style.css">
+
+  </head>
+    
+  <body>
+  <!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Семейный бюджет</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Семейный бюджет</h1>
+
+<!-- КНОПКИ НАВИГАЦИИ -->
+<div class="nav">
+    <button id="btnInitial">Начальные балансы</button>
+    <button id="btnAdd">Внести доход / расход</button>
+    <button id="btnFinal">Конечные балансы</button>
+</div>
+
+<!-- НАЧАЛЬНЫЕ БАЛАНСЫ -->
+<div id="initialScreen" class="screen hidden">
+    <h2>Начальные балансы</h2>
+    <ul id="initialBalances"></ul>
+</div>
+
+<!-- ДОХОД / РАСХОД -->
+<div id="addScreen" class="screen hidden">
+    <h2>Доходы и расходы</h2>
+
+    <input id="amount" type="number" placeholder="Сумма">
+
+    <select id="currency">
+        <option value="RUB">RUB</option>
+        <option value="USD">USD</option>
+        <option value="EUR">EUR</option>
+        <option value="ARS">ARS</option>
+        <option value="BTC">BTC</option>
+        <option value="ETH">ETH</option>
+        <option value="USDT">USDT</option>
+    </select>
+
+    <select id="type">
+        <option value="income">Доход</option>
+        <option value="expense">Расход</option>
+    </select>
+
+    <button id="addBtn">Добавить операцию</button>
+
+    <ul id="operationsList"></ul>
+</div>
+
+<!-- КОНЕЧНЫЕ БАЛАНСЫ -->
+<div id="finalScreen" class="screen hidden">
+    <h2>Конечные балансы</h2>
+    <ul id="finalBalances"></ul>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
+    <script  src="./script.js"></script>
+
+  </body>
+  
+</html>
