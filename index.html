@@ -12,58 +12,75 @@
   <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title>Семейный бюджет</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Семейный бюджет</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>Семейный бюджет</h1>
+<header>
+    <h1>Семейный бюджет</h1>
+    <nav class="nav">
+        <button data-tab="initial">Начальные</button>
+        <button data-tab="add">Операции</button>
+        <button data-tab="final">Конечные</button>
+        <button data-tab="reconcile">Сверка</button>
+    </nav>
+</header>
 
-<!-- КНОПКИ НАВИГАЦИИ -->
-<div class="nav">
-    <button id="btnInitial">Начальные балансы</button>
-    <button id="btnAdd">Внести доход / расход</button>
-    <button id="btnFinal">Конечные балансы</button>
-</div>
+<main>
+    <!-- НАЧАЛЬНЫЕ БАЛАНСЫ -->
+    <section id="initial" class="tab hidden">
+        <h2>Начальные балансы</h2>
+        <div id="initialBalances"></div>
+        <div class="total-row">Итог (USD): <span id="initialTotalUSD"></span></div>
+    </section>
 
-<!-- НАЧАЛЬНЫЕ БАЛАНСЫ -->
-<div id="initialScreen" class="screen hidden">
-    <h2>Начальные балансы</h2>
-    <ul id="initialBalances"></ul>
-</div>
+    <!-- ДОБАВЛЕНИЕ / РЕДАКТИРОВАНИЕ -->
+    <section id="add" class="tab hidden">
+        <h2>Доход / Расход</h2>
 
-<!-- ДОХОД / РАСХОД -->
-<div id="addScreen" class="screen hidden">
-    <h2>Доходы и расходы</h2>
+        <!-- Первая строка: сумма + валюта -->
+        <div class="input-row-top">
+            <input id="amount" type="number" placeholder="Сумма 💰">
+            <select id="currency"></select>
+        </div>
 
-    <input id="amount" type="number" placeholder="Сумма">
+        <!-- Вторая строка: тип + дата + категория -->
+        <div class="input-row-bottom">
+            <select id="type">
+                <option value="income">Доход 📈</option>
+                <option value="expense">Расход 📉</option>
+            </select>
+            <input id="date" type="date">
+            <select id="category" class="hidden"></select>
+        </div>
 
-    <select id="currency">
-        <option value="RUB">RUB</option>
-        <option value="USD">USD</option>
-        <option value="EUR">EUR</option>
-        <option value="ARS">ARS</option>
-        <option value="BTC">BTC</option>
-        <option value="ETH">ETH</option>
-        <option value="USDT">USDT</option>
-    </select>
+        <button id="addBtn" class="primary">Добавить</button>
+        <ul id="operationsList"></ul>
+    </section>
 
-    <select id="type">
-        <option value="income">Доход</option>
-        <option value="expense">Расход</option>
-    </select>
+    <!-- КОНЕЧНЫЕ БАЛАНСЫ -->
+    <section id="final" class="tab hidden">
+        <h2>Конечные балансы</h2>
+        <div id="finalBalances"></div>
+        <div class="total-row">Итог (USD): <span id="finalTotalUSD"></span></div>
 
-    <button id="addBtn">Добавить операцию</button>
+        <h3>Курсы валют (USD)</h3>
+        <div id="exchangeRates"></div>
+        <button id="saveRates" class="primary">Сохранить курсы</button>
+    </section>
 
-    <ul id="operationsList"></ul>
-</div>
-
-<!-- КОНЕЧНЫЕ БАЛАНСЫ -->
-<div id="finalScreen" class="screen hidden">
-    <h2>Конечные балансы</h2>
-    <ul id="finalBalances"></ul>
-</div>
+    <!-- СВЕРКА -->
+    <section id="reconcile" class="tab hidden">
+        <h2>Сверка</h2>
+        <p>Введите фактические суммы по валютам:</p>
+        <div id="reconcileInputs"></div>
+        <button id="checkBtn" class="primary">Проверить</button>
+        <div id="reconcileResults"></div>
+        <button id="applyAdjustments" class="primary hidden">Записать корректировки</button>
+    </section>
+</main>
 
 <script src="script.js"></script>
 </body>
